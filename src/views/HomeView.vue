@@ -1,161 +1,66 @@
 <template>
-  <div>
-    <audio ref="audioPlayer" :src="songUrl"></audio>
-    <img :src="songImageUrl" alt="Şarkı Resmi">
-    <p>{{ songTittle }}</p>
-    <div class="buttons">
-      <button @click="playSong">Şarkıyı Çal</button>
-      <button @click="stopSong">Şarkıyı Durdur</button>
-      <button @click="nextSong">Sıradaki Şarkıya Geç</button>
-      <button @click="backSong">Geri Dön</button>
+  <div class="container">
+    <img src="/images/tryme.gif" alt="" class="background-image">
+    <div class="button-container">
+      <router-link to="/about" class="button">Listen To Music</router-link>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      songs: [
-        {
-          title: 'Anıl Piyancı - Baba Parası',
-          url: '/music/anılpiyancı.mp3',
-          image: '/images/anıl.jpg'
-        },
-        {
-          title: 'Anıl Piyancı - Üstümde Tütüyo Duman',
-          url: '/music/anılutd.mp3',
-          image: '/images/anıl.jpg'
-        },
-        {
-          title: 'Anıl Piyancı - S.S.D',
-          url: '/music/anılssd.mp3',
-          image: '/images/anıl.jpg'
-        },
-        {
-          title: 'Anıl Piyancı - Boğar Beni Gündüz',
-          url: '/music/anılbbg.mp3',
-          image: '/images/anıl.jpg'
-        },
-        {
-          title: 'Joker - Eriyorum Hala',
-          url: '/music/joker.mp3',
-          image: '/images/anıl.jpg'
-        },
-      ],
-      songIndex: 0
-    };
-  },
-  computed: {
-    songUrl() {
-      return this.songs[this.songIndex].url
-    },
-    songImageUrl() {
-      return this.songs[this.songIndex].image
-    },
-    songTittle() {
-      return this.songs[this.songIndex].title
-    }
-  },
-  methods: {
-    playSong() {
-      this.$refs.audioPlayer.play();
-    },
-    stopSong() {
-      this.$refs.audioPlayer.pause();
-    },
-    nextSong() {
-      this.songIndex++;
-      if (this.songIndex >= this.songs.length) {
-        this.songIndex = 0;
-      }
-    },
-    backSong() {
-      this.songIndex--;
-    },
+  name: "HomePage",
+  mounted() {
+    window.scrollTo(0, document.body.scrollHeight / 3);
   }
 };
 </script>
+
 <style>
-body {
-  background-color: black;
-  color: aqua;
+body{
+  background-color: #053754;
+}
+.container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
 }
 
-div {
-  margin-top: 50px;
-  display: block;
-  align-items: center;
+.background-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-p {
-  text-shadow: 0 0 30px #fff, 0 0 40px aqua, 0 0 100px aqua;
-  text-align: center;
-  padding: 15px;
-  margin: auto;
-  color: white;
+.button-container {
+  position: absolute;
+  left: 50%;
+  top: 70%;
+  transform: translate(-50%, -50%);
 }
 
-img {
-  margin: auto;
-  display: block;
-  width: 200px;
-  height: 200px;
-  border-radius: 100px;
-}
-
-.buttons {
-  width: 600px;
-  margin: auto;
-}
-
-button {
-  margin: 3px;
-  background-color: #000000;
+.button {
+  display: inline-block;
+  padding: 16px 32px;
+  border-radius: 4px;
+  background-color:none;
   color: #fff;
-  padding: 10px 20px;
-  font-size: 16px;
-  border: none;
-  position: relative;
-  box-shadow: 0 0 5px aqua;
-  outline: none;
+  font-size: 18px;
+  text-align: center;
+  text-decoration: none;
+  box-shadow:  0 0 10px white , 0 0 20px aqua;
 }
 
-button:hover {
+.button:hover {
   transition: 1s;
-  margin: 3px;
-  background-color: aqua;
-  padding: 10px 20px;
-  font-size: 16px;
-  border: none;
-  position: relative;
-  box-shadow: 0 0 5px aqua;
-  outline: none;
-  color: black
+  background-color: #0f6a83;
 }
-
-audio {
+audio{
   display: none;
 }
-
-@media (max-width:500px) {
-  .buttons {
-    width: 100%;
-
+@media (max-width:500px){
+  .button{
+    width: 200px;
   }
-
-  button {
-    display: block;
-    margin: auto;
-    width: 100%;
-  }
-
-  img {
-    border-radius: 100px;
-    margin: auto;
-  }
-
-  p {
-    text-align: center;
-  }
-}</style>
+}
+</style>
