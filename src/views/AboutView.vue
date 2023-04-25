@@ -148,12 +148,13 @@ audio {
 @media (max-width:500px) {
   .buttons {
     width: 100%;
+    margin: auto;
   }
 
   button {
     display: block;
-    margin: auto;
-    width: 100%;
+    width: 50%;
+    margin: 5px;
   }
 
   img {
