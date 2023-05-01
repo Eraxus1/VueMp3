@@ -1,15 +1,15 @@
 <template>
-      <Header />
+  <Header />
 
-  <div>
+  <div class="main">
     <audio ref="audioPlayer" :src="songUrl"></audio>
     <img :src="songImageUrl" alt="Şarkı Resmi">
     <p>{{ songTittle }}</p>
     <div class="buttons">
-      <button @click="playSong">Şarkıyı Çal</button>
-      <button @click="stopSong">Şarkıyı Durdur</button>
-      <button @click="nextSong">Sıradaki Şarkıya Geç</button>
-      <button @click="backSong">Geri Dön</button>
+      <button @click="playSong" class="songbutton">Şarkıyı Çal</button>
+      <button @click="stopSong" class="songbutton">Şarkıyı Durdur</button>
+      <button @click="nextSong" class="songbutton">Sıradaki Şarkıya Geç</button>
+      <button @click="backSong" class="songbutton">Geri Dön</button>
     </div>
   </div>
 </template>
@@ -88,11 +88,14 @@ body {
   color: aqua;
 }
 
-div {
-  margin-top: 70px;
-  display: block;
-  align-items: center;
+.main {
+  top: 0;
+  left: 0;
+  position: fixed;
+  margin-left: 30%;
+  margin-top: 150px;
 }
+
 p {
   text-align: center;
   padding: 15px;
@@ -113,14 +116,14 @@ img {
   margin: auto;
 }
 
-button {
+.songbutton {
   margin: 3px;
   background-color: none;
   color: black;
   opacity: 0.7;
   padding: 10px 20px;
   font-size: 16px;
-  width:200px;
+  width: 200px;
   left: 98px;
   border: none;
   position: relative;
@@ -128,17 +131,17 @@ button {
   outline: none;
 }
 
-button:hover {
+.songbutton:hover {
   transition: 1s;
   margin: 3px;
-  background-color: #053754;  
+  background-color: #053754;
   padding: 10px 20px;
   font-size: 16px;
   border: none;
   position: relative;
   box-shadow: 0 0 5px white;
   outline: none;
-  color:white;
+  color: white;
 }
 
 audio {
@@ -146,24 +149,29 @@ audio {
 }
 
 @media (max-width:500px) {
+
+
   .buttons {
     width: 100%;
     margin: auto;
+    margin-left: -120px;
   }
 
   button {
     display: block;
-    width: 50%;
-    margin: 5px;
+    width: 20%;
+    margin-left: -75px;
   }
 
   img {
     border-radius: 100px;
-    margin: auto;
+    margin-left: -25px;
   }
 
-  p {
+  .main p {
     text-align: center;
+    width: 100%;
   }
-}</style>
 
+}
+</style>
