@@ -2,13 +2,15 @@
   <div class="headerbuttons">
     <button class="toggle" @click="toggle()">Open The Bar</button>
   </div>
-  <header v-if="show">
+  <header v-if="show" class="scroll-snap">
+    <router-link to="/about">Music Type</router-link>
     <router-link to="/about">Music Type</router-link>
     <router-link to="/about">Music Type</router-link>
     <router-link to="/about">Music Type</router-link>
     <RouterView />
   </header>
 </template>
+
 <script>
 export default {
   data() {
@@ -38,10 +40,14 @@ header {
   justify-content: center;
   text-align: center;
   align-items: center;
-  padding: 10px;
+  padding: 0px;
+  scroll-snap-type: x mandatory;
+  overflow-x: scroll;
 }
 
-
+header a {
+  scroll-snap-align: start;
+}
 
 .toggle {
   width: 10%;
@@ -56,21 +62,24 @@ header {
   margin: 10px;
   margin-left: 44.5%;
   border-radius: 10px;
-
 }
 
 a {
-  color: white;
+  color: rgb(255, 255, 255);
+  width: 100px;
   margin: 15px;
   text-decoration: none;
 }
 
-@media (max-width:500px) {
+@media (max-width: 500px) {
   .toggle {
     width: 25%;
     margin-left: 37%;
   }
+
+  header a {
+    font-size: 10px;
+    height: 50;
+  }
 }
 </style>
-
-
